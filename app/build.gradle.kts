@@ -3,8 +3,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     application
-    jacoco
     checkstyle
+    jacoco
     id("io.freefair.lombok") version "8.4"
     id("com.adarshr.test-logger") version "4.0.0"
     id("com.github.ben-manes.versions") version "0.50.0"
