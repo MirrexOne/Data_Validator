@@ -1,7 +1,13 @@
 package hexlet.code;
 
+import hexlet.code.schemas.StringSchema;
+
 public class Validator {
     public static void main(String[] args) {
-        System.out.println("Mirrex");
+
+    }
+
+    StringSchema string() {
+        return new StringSchema();
     }
 }

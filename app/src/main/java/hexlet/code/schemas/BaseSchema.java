@@ -1,4 +1,5 @@
 package hexlet.code.schemas;
 
-public class BaseSchema {
+public class BaseSchema<T> {
+
 }
