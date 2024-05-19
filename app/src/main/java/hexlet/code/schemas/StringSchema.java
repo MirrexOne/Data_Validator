@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public class StringSchema {
 
-    private final Map<String , Predicate<String>> predicatesMap = new HashMap<>();
+    private final Map<String, Predicate<String>> predicatesMap = new HashMap<>();
 
     public StringSchema required() {
         Predicate<String> isNotNull = Objects::nonNull;
