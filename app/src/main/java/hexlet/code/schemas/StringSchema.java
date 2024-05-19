@@ -19,12 +19,12 @@ public class StringSchema extends BaseSchema<String> {
     }
 
     @Override
-    public <StringScheme> StringScheme required() {
+    public StringSchema required() {
         Predicate<String> isNotNull = Objects::nonNull;
         Predicate<String> isNotEmpty = s -> !s.isEmpty();
         Predicate<String> notNullAndEmpty = isNotNull.and(isNotEmpty);
         predicatesMap.put("required", notNullAndEmpty);
-        return (StringScheme) this;
+        return this;
     }
 
     @Override

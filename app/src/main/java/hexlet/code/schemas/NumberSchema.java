@@ -6,10 +6,10 @@ import java.util.function.Predicate;
 public class NumberSchema extends BaseSchema<Integer> {
 
     @Override
-    public <NumberScheme> NumberScheme required() {
+    public NumberSchema required() {
         Predicate<Integer> isNotNull = Objects::nonNull;
         predicatesMap.put("required", isNotNull);
-        return (NumberScheme) this;
+        return this;
     }
 
     @Override

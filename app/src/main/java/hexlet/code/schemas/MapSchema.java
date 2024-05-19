@@ -6,10 +6,10 @@ import java.util.function.Predicate;
 public class MapSchema extends BaseSchema<Map<String, String>> {
 
     @Override
-    public <MapScheme> MapScheme required() {
+    public MapSchema required() {
         Predicate<Map<String, String>> doesInitialized = map -> map != null && !map.isEmpty();
         predicatesMap.put("required", doesInitialized);
-        return (MapScheme) this;
+        return this;
     }
 
     @Override
@@ -23,5 +23,8 @@ public class MapSchema extends BaseSchema<Map<String, String>> {
         Predicate<Map<String, String>> isSizeSufficient = map -> map.size() == requiredSize;
         predicatesMap.put("sizeof", isSizeSufficient);
         return this;
+    }
+
+    public void shape() {
     }
 }

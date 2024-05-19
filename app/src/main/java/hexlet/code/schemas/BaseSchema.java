@@ -8,7 +8,7 @@ public abstract class BaseSchema<T> {
 
     protected Map<String, Predicate<T>> predicatesMap = new HashMap<>();
 
-    public abstract <K> K required();
+    public abstract BaseSchema<T> required();
 
     public abstract boolean isValid(T type);
 }
