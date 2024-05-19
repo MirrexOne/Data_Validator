@@ -1,21 +1,10 @@
 package hexlet.code.schemas;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class StringSchema {
+public class StringSchema extends BaseSchema<String> {
 
-    private final Map<String, Predicate<String>> predicatesMap = new HashMap<>();
-
-    public StringSchema required() {
-        Predicate<String> isNotNull = Objects::nonNull;
-        Predicate<String> isNotEmpty = s -> !s.isEmpty();
-        Predicate<String> notNullAndEmpty = isNotNull.and(isNotEmpty);
-        predicatesMap.put("required", notNullAndEmpty);
-        return this;
-    }
 
     public StringSchema minLength(int minLength) {
         Predicate<String> isLessThan = s -> s.length() >= minLength;
@@ -29,6 +18,16 @@ public class StringSchema {
         return this;
     }
 
+    @Override
+    public <StringScheme> StringScheme required() {
+        Predicate<String> isNotNull = Objects::nonNull;
+        Predicate<String> isNotEmpty = s -> !s.isEmpty();
+        Predicate<String> notNullAndEmpty = isNotNull.and(isNotEmpty);
+        predicatesMap.put("required", notNullAndEmpty);
+        return (StringScheme) this;
+    }
+
+    @Override
     public boolean isValid(String s) {
         return predicatesMap.values().stream()
                 .allMatch(p -> p.test(s));

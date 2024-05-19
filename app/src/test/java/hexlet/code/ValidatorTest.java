@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,32 @@ class ValidatorTest {
 
         StringSchema string = stringValidator.string();
         assertThat(string.minLength(10).minLength(4).isValid("Hexlet")).isTrue();
+    }
+
+    @Test
+    void testNumberValidator() {
+        Validator numberValidator = new Validator();
+        NumberSchema numberSchema = numberValidator.number();
+
+        assertThat(numberSchema.isValid(5)).isTrue();
+        assertThat(numberSchema.isValid(null)).isTrue();
+
+        numberSchema.positive();
+
+        assertThat(numberSchema.isValid(null)).isTrue();
+
+        numberSchema.required();
+
+        assertThat(numberSchema.isValid(null)).isFalse();
+        assertThat(numberSchema.isValid(10)).isTrue();
+        assertThat(numberSchema.isValid(-10)).isFalse();
+        assertThat(numberSchema.isValid(0)).isFalse();
+
+        numberSchema.range(5, 10);
+
+        assertThat(numberSchema.isValid(5)).isTrue();
+        assertThat(numberSchema.isValid(10)).isTrue();
+        assertThat(numberSchema.isValid(4)).isFalse();
+        assertThat(numberSchema.isValid(11)).isFalse();
     }
 }
