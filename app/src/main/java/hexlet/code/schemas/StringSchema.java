@@ -29,8 +29,8 @@ public class StringSchema extends BaseSchema<String> {
 
     @Override
     public boolean isValid(String s) {
-        return predicatesMap.values().stream()
+        return predicatesMap.values()
+                .stream()
                 .allMatch(p -> p.test(s));
-
     }
 }

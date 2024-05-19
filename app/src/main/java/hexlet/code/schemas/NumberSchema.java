@@ -14,7 +14,8 @@ public class NumberSchema extends BaseSchema<Integer> {
 
     @Override
     public boolean isValid(Integer type) {
-        return predicatesMap.values().stream()
+        return predicatesMap.values()
+                .stream()
                 .allMatch(p -> p.test(type));
     }
 
@@ -29,5 +30,4 @@ public class NumberSchema extends BaseSchema<Integer> {
         predicatesMap.put("range", isInRange);
         return this;
     }
-
 }
