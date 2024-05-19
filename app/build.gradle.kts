@@ -2,11 +2,11 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    id("java")
     application
     jacoco
-    id("checkstyle")
+    checkstyle
     id("io.freefair.lombok") version "8.4"
+    id("com.adarshr.test-logger") version "4.0.0"
     id("com.github.ben-manes.versions") version "0.50.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
@@ -43,5 +43,7 @@ tasks.test {
 }
 
 tasks.jacocoTestReport {
-    reports { xml.required.set(true) }
+    reports {
+        xml.required.set(true)
+    }
 }
