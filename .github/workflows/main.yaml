@@ -20,6 +20,8 @@ jobs:
           arguments: build
           build-root-directory: app
       - run: make -C app build
+      - run: make -C app report
+      - run: make -C app lint
 
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
