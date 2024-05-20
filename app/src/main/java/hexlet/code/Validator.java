@@ -8,7 +8,7 @@ public class Validator {
 
     /**
      * Creates a StringSchema schema
-     * for validating String data
+     * for validating String data.
      * @return new StringSchema object
      */
     public StringSchema string() {
@@ -17,7 +17,7 @@ public class Validator {
 
     /**
      * Creates NumberSchema
-     * for validating Integer data
+     * for validating Integer data.
      * @return new NumberSchema object
      */
     public NumberSchema number() {
@@ -26,7 +26,7 @@ public class Validator {
 
     /**
      * Creates MapSchema
-     * for validating Map data
+     * for validating Map data.
      * @return new MapSchema object
      */
     public MapSchema map() {
