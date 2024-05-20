@@ -5,19 +5,16 @@ import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 
 public class Validator {
-    public static void main(String[] args) {
 
-    }
-
-    StringSchema string() {
+    public StringSchema string() {
         return new StringSchema();
     }
 
-    NumberSchema number() {
+    public NumberSchema number() {
         return new NumberSchema();
     }
 
-    MapSchema map() {
+    public MapSchema map() {
         return new MapSchema();
     }
 }

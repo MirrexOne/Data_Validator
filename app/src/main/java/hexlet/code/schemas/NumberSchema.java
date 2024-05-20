@@ -1,33 +1,22 @@
 package hexlet.code.schemas;
 
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema<Integer> {
 
     @Override
     public NumberSchema required() {
-        Predicate<Integer> isNotNull = Objects::nonNull;
-        predicatesMap.put("required", isNotNull);
+        addPredicate("required", Objects::nonNull);
         return this;
     }
 
-    @Override
-    public boolean isValid(Integer type) {
-        return predicatesMap.values()
-                .stream()
-                .allMatch(p -> p.test(type));
-    }
-
     public NumberSchema positive() {
-        Predicate<Integer> isPositive = n -> n == null || n > 0;
-        predicatesMap.put("positive", isPositive);
+        addPredicate("positive", n -> n == null || n > 0);
         return this;
     }
 
     public NumberSchema range(int rangeStart, int rangeEnd) {
-        Predicate<Integer> isInRange = n -> n >= rangeStart && n <= rangeEnd;
-        predicatesMap.put("range", isInRange);
+        addPredicate("range", n -> n >= rangeStart && n <= rangeEnd);
         return this;
     }
 }

@@ -6,9 +6,17 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
 
-    protected Map<String, Predicate<T>> predicatesMap = new HashMap<>();
+    protected Map<String, Predicate<T>> conditions = new HashMap<>();
 
     public abstract BaseSchema<T> required();
 
-    public abstract boolean isValid(T type);
+    public boolean isValid(T type) {
+        return conditions.values()
+                .stream()
+                .allMatch(p -> p.test(type));
+    }
+
+    protected void addPredicate(String key, Predicate<T> predicate) {
+        conditions.put(key, predicate);
+    }
 }

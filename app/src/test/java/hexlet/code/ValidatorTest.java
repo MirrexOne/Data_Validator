@@ -75,7 +75,7 @@ class ValidatorTest {
         mapSchema.required();
 
         assertThat(mapSchema.isValid(null)).isFalse();
-        assertThat(mapSchema.isValid(new HashMap<>())).isFalse();
+        assertThat(mapSchema.isValid(new HashMap<>())).isTrue();
 
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
@@ -97,7 +97,22 @@ class ValidatorTest {
         schemas.put("firstName", validator.string().required());
         schemas.put("lastName", validator.string().required().minLength(2));
 
-        mapSchema.shape();
+        mapSchema.shape(schemas);
 
+        Map<String, String> human1 = new HashMap<>();
+        human1.put("firstName", "John");
+        human1.put("lastName", "Smith");
+
+        assertThat(mapSchema.isValid(human1)).isTrue();
+
+        Map<String, String> human2 = new HashMap<>();
+        human2.put("firstName", "John");
+        human2.put("lastName", null);
+        assertThat(mapSchema.isValid(human2)).isFalse();
+
+        Map<String, String> human3 = new HashMap<>();
+        human3.put("firstName", "Anna");
+        human3.put("lastName", "B");
+        assertThat(mapSchema.isValid(human3)).isFalse();
     }
 }
