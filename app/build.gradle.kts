@@ -2,9 +2,9 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    java
-    checkstyle
     jacoco
+    checkstyle
+    id("java")
     id("io.freefair.lombok") version "8.4"
     id("com.adarshr.test-logger") version "4.0.0"
     id("com.github.ben-manes.versions") version "0.50.0"
@@ -13,10 +13,6 @@ plugins {
 
 group = "hexlet.code"
 version = "1.0-SNAPSHOT"
-
-application {
-    mainClass = "hexlet.code.App"
-}
 
 repositories {
     mavenCentral()
