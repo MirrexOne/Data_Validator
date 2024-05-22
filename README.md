@@ -12,7 +12,7 @@
 ### The following data type objects are currently supported:
 *String, Integer, Map and Map object with structure checking support*
 
-### Library usage example
+### Library usage example:
 - Create an object ```` Validator v = new Validator(); ````
 - Use one of the three methods to create an object to validate a particular schema   
 ```var stringValidationObject = v.string()``` - creates an object of class ``StringSchema`` that works with strings  
@@ -26,12 +26,12 @@
 - ```stringValidationObject.minLength(Integer your_number)``` - enters the minimum length of the passed string, the string must be equal to or greater than
 - ```stringValidationObject.contains(String your_substring)``` - the passed substring must be contained in the final validation object  
 
-  #### Methods(“flags”) for validating numbers ####
+#### Methods(“flags”) for validating numbers ####
 - ```numberValidationObject.required()``` - makes the data mandatory, i.e., null cannot be passed in
 - ```numberValidationObject.positive()``` - imposes a restriction on the sign of the number - the number must be positive only
 - ```numberValidationObject.range(Integer lower_boundary, Integer upper_boundary)``` - imposes restrictions on the range of the number - the number can only be within the range, including numbers on its boundaries.
 
-  #### Methods(“flags”) for validation of Map type objects ####
+#### Methods(“flags”) for validation of Map type objects ####
 - ```mapValidationObject.required()``` - makes the data mandatory, i.e. null cannot be passed in
 - ```mapValidationObject.sizeof(Integer your_size)``` - imposes a restriction on the size of an object of Map type - the number of key-value pairs must match the passed value 
 - ```mapValidationObject.shape(Map<String, BaseSchema<String>> your_map_with_configured_validation_schemas)``` - used to define properties of an object of Map type and create a schema to validate their values. In the argument of this function is passed an object of type Map, where the values are objects of class ```BaseSchema<String>``` (you can say ``StringSchema``) - with configured additional checks. Then, when passing to the method ```isValid()``` checked objects of type Map, will be compared values by keys for compliance with the previously defined schemes. 
